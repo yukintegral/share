@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Chatアプリ</title>
+</head>
+<body>
+
+<!-- コンテンツ表示画面 -->
+  <div>
+    <div>名前<input type="text" id="username"></div>
+    <div>
+      <!-- メッセージ入力欄 -->
+      <textarea id="text" rows="5" cols="20"></textarea>
+      <!-- 送信ボタン -->
+      <button id="send">送信</button>
+    </div>
+    <!-- チャット文字をリスト表示 -->
+    <div id="output"></div>
+</div>
+<!--/ コンテンツ表示画面 -->
+
+
+
+<script>
+  // 送信処理
+  $("#send").on("click",function(){
+      newPostRef.push({
+        username: $("#username").val(),
+        Text: $("#text").val()
+      });
+    $("#text").val("");
+    });
+  // 送信処理2
+  // ("#text").on("keydown",function(){
+  //   console.log(e);
+  //   if(e.keyCode==13){
+  //         newPostRef.push({
+  //         username: $("#username").val(),
+  //         Text: $("#text").val()
+  //         });
+  //         $("#text").val("");
+  //       }
+  //   });
+  
+
+  // 受信処理
+  newPostRef.on("#child_added",function(data){
+  const v = data.val();
+  const k = data.key;
+    
+  // const str = "<dl><dt>"+v.username+"</dl><dt>"+v.text+"</dd></dt>";
+  str += "<dl>";
+  str += "<dt>"+v.username+"</dt>";
+  str += "<dl>"+v.text+"</dd>";
+  str += "</dl>";
+  $("#output").append(str);
+  });
+</script>
+
+
+<!-- 以下JavaScript領域 -->
+<!-- キャッシュサーバから読み込んでいる -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<!-- 以下Firebase -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.14.3/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.14.3/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAupA9P4is_akn3IuVtu8KMm4owAXZBnQU",
+    authDomain: "gschat-5416c.firebaseapp.com",
+    databaseURL: "https://gschat-5416c.firebaseio.com",
+    projectId: "gschat-5416c",
+    storageBucket: "gschat-5416c.appspot.com",
+    messagingSenderId: "739378114098",
+    appId: "1:739378114098:web:acbe05f0df82188d3a562b",
+    measurementId: "G-JRSNB7356Y"
+  };
+
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+ //  MSG送受信準備
+  let newPostRef = firebase.database().ref();
+  
+  
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
