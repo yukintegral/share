@@ -1,0 +1,43 @@
+body{
+  width: 100px;
+  justify-content: space-between;
+}
+header{
+  text-align: center;
+}
+
+
+ul{
+  width: 100px;
+  padding: 0;
+  border-top: 1px solid #000000;
+  display: table;
+  table-layout: fixed;
+}
+
+li{
+  width: 80px;
+  border: 1px solid #666;
+  background-color: white;
+  display: table-cell;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+}
+li:hover{
+  background: #0d7dfd;
+  color:#fff;
+}
+
+
+th{
+  width:100px;
+  border-bottom: 1px solid #8dc3f5;
+}
+td{
+  width: 100px;
+  border-bottom: 1px solid #8dc3f5;
+}
+#list{
+  width: 100px;
+}
